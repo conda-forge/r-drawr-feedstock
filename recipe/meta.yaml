@@ -1,4 +1,4 @@
-{% set version = '1.0.1' %}
+{% set version = "1.0.3" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/DRaWR_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/DRaWR/DRaWR_{{ version }}.tar.gz
-  sha256: 10bfdd9afe193f5c259d5c3af9286c842e08e67a8b24ee89616688f6f967cddd
+  sha256: e86475e90565f70315efafd4dc7777d1e1743ef52ac1ba8d7f2cff1012834cdf
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -40,19 +40,12 @@ test:
 about:
   home: https://CRAN.R-project.org/package=DRaWR
   license: GPL-2.0-only
-  summary: We present DRaWR, a network-based method for ranking genes or properties related to
-    a given gene set. Such related genes or properties are identified from among the
-    nodes of a large, heterogeneous network of biological information. Our method involves
-    a random walk with restarts, performed on an initial network with multiple node
-    and edge types, preserving more of the original, specific property information than
-    current methods that operate on homogeneous networks. In this first stage of our
-    algorithm, we find the properties that are the most relevant to the given gene set
-    and extract a subnetwork of the original network, comprising only the relevant properties.
-    We then rerank genes by their similarity to the given gene set, based on a second
-    random walk with restarts, performed on the above subnetwork.
+  summary: We present DRaWR, a network-based method for ranking genes or properties related to a given gene set. Such related genes or properties are identified from among the nodes of a large, heterogeneous network of biological information. Our method involves a random walk with restarts, performed on an initial network
+    with multiple node and edge types, preserving more of the original, specific property information than current methods that operate on homogeneous networks. In this first stage of our algorithm, we find the properties that are the most relevant to the given gene set and extract a subnetwork of the original network, comprising
+    only the relevant properties. We then rerank genes by their similarity to the given gene set, based on a second random walk with restarts, performed on the above subnetwork.
   license_family: GPL2
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
 extra:
   recipe-maintainers:
